@@ -1,6 +1,6 @@
 ## IAaaS: Intelligent Accommodation as a Service
 
-![](https://img.shields.io/badge/language-golang-blue.svg)
+![](https://img.shields.io/badge/language-java-orange.svg)
 ![](https://img.shields.io/badge/license-Apache_2.0-green.svg)
 
 ----

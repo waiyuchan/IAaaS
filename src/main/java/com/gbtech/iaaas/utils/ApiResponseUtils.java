@@ -1,7 +1,7 @@
 package com.gbtech.iaaas.utils;
 
-import cc.tanbit.ciso.domain.vo.ApiResponse;
 import com.alibaba.fastjson.JSON;
+import com.gbtech.iaaas.vo.ApiResponse;
 
 import java.util.UUID;
 
