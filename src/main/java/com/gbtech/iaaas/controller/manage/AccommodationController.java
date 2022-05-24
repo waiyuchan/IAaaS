@@ -1,4 +1,4 @@
-package com.gbtech.iaaas.controller;
+package com.gbtech.iaaas.controller.manage;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gbtech.iaaas.service.AccommodationService;
