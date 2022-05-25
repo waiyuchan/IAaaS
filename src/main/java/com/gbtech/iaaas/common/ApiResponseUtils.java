@@ -1,4 +1,4 @@
-package com.gbtech.iaaas.utils;
+package com.gbtech.iaaas.common;
 
 import com.alibaba.fastjson.JSON;
 import com.gbtech.iaaas.vo.ApiResponse;

@@ -1,4 +1,4 @@
-package com.gbtech.iaaas.utils;
+package com.gbtech.iaaas.common;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

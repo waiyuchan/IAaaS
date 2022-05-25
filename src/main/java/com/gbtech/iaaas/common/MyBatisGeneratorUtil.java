@@ -1,4 +1,4 @@
-package com.gbtech.iaaas.utils;
+package com.gbtech.iaaas.common;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
