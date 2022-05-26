@@ -1,7 +1,9 @@
 package com.gbtech.iaaas.service;
 
+import com.gbtech.iaaas.mbg.model.AcBuilding;
+
 public interface AccommodationService {
 
-    boolean createAccommodation(Object... args);
+    int createAccommodation(AcBuilding acBuilding);
 
 }
