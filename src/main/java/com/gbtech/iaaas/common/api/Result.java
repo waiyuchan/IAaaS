@@ -1,14 +1,14 @@
 package com.gbtech.iaaas.common.api;
 
-public class ApiRespResult<T> {
+public class Result<T> {
     private long code;
     private String message;
     private T data;
 
-    protected ApiRespResult() {
+    protected Result() {
     }
 
-    protected ApiRespResult(long code, String message, T data) {
+    protected Result(long code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -19,8 +19,8 @@ public class ApiRespResult<T> {
      *
      * @param data 获取的数据
      */
-    public static <T> ApiRespResult<T> success(T data) {
-        return new ApiRespResult<T>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
+    public static <T> Result<T> success(T data) {
+        return new Result<T>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
     }
 
     /**
@@ -29,8 +29,8 @@ public class ApiRespResult<T> {
      * @param data    获取的数据
      * @param message 提示信息
      */
-    public static <T> ApiRespResult<T> success(T data, String message) {
-        return new ApiRespResult<T>(ResultCode.SUCCESS.getCode(), message, data);
+    public static <T> Result<T> success(T data, String message) {
+        return new Result<T>(ResultCode.SUCCESS.getCode(), message, data);
     }
 
     /**
@@ -38,8 +38,8 @@ public class ApiRespResult<T> {
      *
      * @param errorCode 错误码
      */
-    public static <T> ApiRespResult<T> failed(ApiErrorCode errorCode) {
-        return new ApiRespResult<T>(errorCode.getCode(), errorCode.getMessage(), null);
+    public static <T> Result<T> failed(ErrorCode errorCode) {
+        return new Result<T>(errorCode.getCode(), errorCode.getMessage(), null);
     }
 
     /**
@@ -47,21 +47,21 @@ public class ApiRespResult<T> {
      *
      * @param message 提示信息
      */
-    public static <T> ApiRespResult<T> failed(String message) {
-        return new ApiRespResult<T>(ResultCode.FAILED.getCode(), message, null);
+    public static <T> Result<T> failed(String message) {
+        return new Result<T>(ResultCode.FAILED.getCode(), message, null);
     }
 
     /**
      * 失败返回结果
      */
-    public static <T> ApiRespResult<T> failed() {
+    public static <T> Result<T> failed() {
         return failed(ResultCode.FAILED);
     }
 
     /**
      * 参数验证失败返回结果
      */
-    public static <T> ApiRespResult<T> validateFailed() {
+    public static <T> Result<T> validateFailed() {
         return failed(ResultCode.VALIDATE_FAILED);
     }
 
@@ -70,22 +70,22 @@ public class ApiRespResult<T> {
      *
      * @param message 提示信息
      */
-    public static <T> ApiRespResult<T> validateFailed(String message) {
-        return new ApiRespResult<T>(ResultCode.VALIDATE_FAILED.getCode(), message, null);
+    public static <T> Result<T> validateFailed(String message) {
+        return new Result<T>(ResultCode.VALIDATE_FAILED.getCode(), message, null);
     }
 
     /**
      * 未登录返回结果
      */
-    public static <T> ApiRespResult<T> unauthorized(T data) {
-        return new ApiRespResult<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
+    public static <T> Result<T> unauthorized(T data) {
+        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
     }
 
     /**
      * 未授权返回结果
      */
-    public static <T> ApiRespResult<T> forbidden(T data) {
-        return new ApiRespResult<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
+    public static <T> Result<T> forbidden(T data) {
+        return new Result<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
     }
 
     public long getCode() {

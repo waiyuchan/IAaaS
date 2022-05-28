@@ -1,6 +1,6 @@
 package com.gbtech.iaaas.common.api;
 
-public enum ResultCode implements ApiErrorCode {
+public enum ResultCode implements ErrorCode {
     SUCCESS(200, "请求成功"),
     FAILED(500, "请求失败"),
     VALIDATE_FAILED(404, "参数检验失败"),

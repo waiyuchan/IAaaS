@@ -1,6 +1,6 @@
 package com.gbtech.iaaas.common.api;
 
-public interface ApiErrorCode {
+public interface ErrorCode {
     long getCode();
 
     String getMessage();
