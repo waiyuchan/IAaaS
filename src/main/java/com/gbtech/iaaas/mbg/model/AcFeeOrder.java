@@ -27,7 +27,7 @@ public class AcFeeOrder implements Serializable {
     private Integer arrears;
 
     @ApiModelProperty(value = "状态，0: 未支付，1: 部分支付，2: 已支付")
-    private Byte status;
+    private Integer status;
 
     @ApiModelProperty(value = "截止日期，格式为: 2021-12-31")
     private Date deadline;
@@ -102,11 +102,11 @@ public class AcFeeOrder implements Serializable {
         this.arrears = arrears;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

@@ -60,7 +60,7 @@ public class AcExpress implements Serializable {
     private Byte isPaid;
 
     @ApiModelProperty(value = "状态，0: 已下单，未支付, 1: 已支付，未发货, 2: 已发货，运输中, 3: 已到达，未签收, 4: 已签收")
-    private Byte status;
+    private Integer status;
 
     @ApiModelProperty(value = "创建时间，格式为: 2021-12-31 00:00:00")
     private Date createTime;
@@ -214,11 +214,11 @@ public class AcExpress implements Serializable {
         this.isPaid = isPaid;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

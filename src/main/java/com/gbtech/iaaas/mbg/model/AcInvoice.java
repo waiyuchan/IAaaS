@@ -81,7 +81,7 @@ public class AcInvoice implements Serializable {
     private String accountBankAndPhoneNumber;
 
     @ApiModelProperty(value = "状态，0: 开票中，1: 已开票，2: 开票异常")
-    private Byte status;
+    private Integer status;
 
     @ApiModelProperty(value = "创建时间，格式为: 2021-12-31 00:00:00")
     private Date createTime;
@@ -291,11 +291,11 @@ public class AcInvoice implements Serializable {
         this.accountBankAndPhoneNumber = accountBankAndPhoneNumber;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

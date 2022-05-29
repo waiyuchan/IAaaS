@@ -36,7 +36,7 @@ public class AcBuilding implements Serializable {
     private Integer roomSum;
 
     @ApiModelProperty(value = "状态，0: 正常，1: 已注销")
-    private Byte status;
+    private Integer status;
 
     @ApiModelProperty(value = "创建时间，格式为: 2021-12-31 00:00:00")
     private Date createTime;
@@ -126,11 +126,11 @@ public class AcBuilding implements Serializable {
         this.roomSum = roomSum;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

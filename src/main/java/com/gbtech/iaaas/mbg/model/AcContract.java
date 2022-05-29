@@ -39,7 +39,7 @@ public class AcContract implements Serializable {
     private Integer preContractId;
 
     @ApiModelProperty(value = "状态，0: 已创建，未签署，1: 签署中，2:已签署，未支付，3：已支付，合同已生效，4: 合同已转移，本合同失效，5: 合同已续签，本合同失效")
-    private Byte status;
+    private Integer status;
 
     @ApiModelProperty(value = "创建时间，格式为: 2021-12-31 00:00:00")
     private Date createTime;
@@ -140,11 +140,11 @@ public class AcContract implements Serializable {
         this.preContractId = preContractId;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

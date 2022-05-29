@@ -15,7 +15,7 @@ public class AcRoomAccessControl implements Serializable {
     private Integer acId;
 
     @ApiModelProperty(value = "状态，0: 未启用，1: 已启用")
-    private Byte status;
+    private Integer status;
 
     @ApiModelProperty(value = "创建时间，格式为: 2021-12-31 00:00:00")
     private Date createTime;
@@ -49,11 +49,11 @@ public class AcRoomAccessControl implements Serializable {
         this.acId = acId;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
