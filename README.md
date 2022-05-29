@@ -1,4 +1,4 @@
-## IAaaS: Intelligent Accommodation as a Service 智慧公寓即服务
+## IAaaS: Intelligent Accommodation as a Service 智慧住宿即服务
 
 ![](https://img.shields.io/badge/language-Java-orange.svg)
 ![](https://img.shields.io/badge/backend_frame-Spring_Boot-6db33f.svg)
