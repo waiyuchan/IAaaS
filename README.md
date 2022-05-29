@@ -6,6 +6,7 @@
 ![](https://img.shields.io/badge/frontend_frame-Vue_3.0-4fc08d.svg)
 ![](https://img.shields.io/badge/components-Ant_Design-348dfe.svg)
 ![](https://img.shields.io/badge/deploy-Docker-blue.svg)
+![](https://img.shields.io/badge/miniprogram_frame-Taro-0000c2.svg)
 ![](https://img.shields.io/badge/license-Apache_2.0-green.svg)
 
 ----
