@@ -16,8 +16,8 @@ public class AccommodationServiceImpl implements AccommodationService {
     private AcBuildingMapper acBuildingMapper;
 
     @Override
-    public int createAccommodation(AcBuilding acBuilding) {
-        return acBuildingMapper.insertSelective(acBuilding);
+    public int createAccommodation(AcBuilding building) {
+        return acBuildingMapper.insertSelective(building);
     }
 
     @Override

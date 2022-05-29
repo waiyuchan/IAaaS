@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AccommodationService {
 
-    int createAccommodation(AcBuilding acBuilding);
+    int createAccommodation(AcBuilding building);
 
     List<AcBuilding> getAccommodationList(int pageNum, int pageSize);
 

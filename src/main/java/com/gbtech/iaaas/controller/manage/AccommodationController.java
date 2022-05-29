@@ -3,7 +3,6 @@ package com.gbtech.iaaas.controller.manage;
 import com.gbtech.iaaas.common.api.Paginator;
 import com.gbtech.iaaas.common.api.Result;
 import com.gbtech.iaaas.mbg.model.AcBuilding;
-import com.gbtech.iaaas.mbg.model.AeStaff;
 import com.gbtech.iaaas.service.AccommodationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,18 +26,18 @@ public class AccommodationController {
     @ApiOperation("创建公寓")
     @RequestMapping(method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public Result createAccommodation(@RequestBody AcBuilding acBuilding) {
+    public Result createAccommodation(@RequestBody AcBuilding building) {
         Result result;
         logger.info(
                 "Request Interface: '/manage/accommodation', " + "Request Content: "
-                        + acBuilding.toString());
-        int count = accommodationService.createAccommodation(acBuilding);
+                        + building.toString());
+        int count = accommodationService.createAccommodation(building);
         if (count == 1) {
-            result = Result.success(acBuilding, "创建公寓成功");
-            logger.info("Create a new accommodation successful: {}", acBuilding);
+            result = Result.success(building, "创建公寓成功");
+            logger.info("Create a new accommodation successful: {}", building);
         } else {
             result = Result.failed("创建公寓失败");
-            logger.info("Create a new accommodation failed: {}", acBuilding);
+            logger.info("Create a new accommodation failed: {}", building);
         }
         return result;
     }

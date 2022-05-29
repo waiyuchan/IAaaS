@@ -1,6 +1,7 @@
 package com.gbtech.iaaas.common.api;
 
 public class Result<T> {
+
     private long code;
     private String message;
     private T data;
@@ -78,14 +79,16 @@ public class Result<T> {
      * 未登录返回结果
      */
     public static <T> Result<T> unauthorized(T data) {
-        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
+        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(),
+                ResultCode.UNAUTHORIZED.getMessage(), data);
     }
 
     /**
      * 未授权返回结果
      */
     public static <T> Result<T> forbidden(T data) {
-        return new Result<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
+        return new Result<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(),
+                data);
     }
 
     public long getCode() {

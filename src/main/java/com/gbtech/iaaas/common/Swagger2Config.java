@@ -39,7 +39,8 @@ public class Swagger2Config {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("IAaaS Swagger 接口管理").description("IAaaS: Intelligent Accommodation as a Service, 智慧住宿解决方案")
+        return new ApiInfoBuilder().title("IAaaS Swagger 接口管理")
+                .description("IAaaS: Intelligent Accommodation as a Service, 智慧住宿解决方案")
                 .contact("weiyuchen").version("1.0").build();
     }
 
