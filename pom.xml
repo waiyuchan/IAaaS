@@ -49,6 +49,11 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <!--SpringSecurity依赖配置-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
     <!-- MyBatis分页插件 -->
     <dependency>
       <groupId>com.github.pagehelper</groupId>
@@ -111,6 +116,18 @@
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger-ui</artifactId>
       <version>2.7.0</version>
+    </dependency>
+    <!--Hutool Java工具包-->
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>5.8.2</version>
+    </dependency>
+    <!--JWT(Json Web Token)登录支持-->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>0.9.1</version>
     </dependency>
     <!-- 其它辅助功能-->
     <dependency>

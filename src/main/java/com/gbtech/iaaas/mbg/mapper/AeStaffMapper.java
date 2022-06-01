@@ -4,7 +4,9 @@ import com.gbtech.iaaas.mbg.model.AeStaff;
 import com.gbtech.iaaas.mbg.model.AeStaffExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AeStaffMapper {
     long countByExample(AeStaffExample example);
 

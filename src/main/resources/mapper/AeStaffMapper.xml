@@ -3,7 +3,6 @@
 <mapper namespace="com.gbtech.iaaas.mbg.mapper.AeStaffMapper">
   <resultMap id="BaseResultMap" type="com.gbtech.iaaas.mbg.model.AeStaff">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="type" jdbcType="TINYINT" property="type" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -81,9 +80,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, type, username, password, name, eng_name, birthday, birthplace, nationality, 
-    cert_type, cert_number, email, mobile_phone, address, postcode, institution, status, 
-    create_time, modify_time
+    id, username, password, name, eng_name, birthday, birthplace, nationality, cert_type, 
+    cert_number, email, mobile_phone, address, postcode, institution, status, create_time, 
+    modify_time
   </sql>
   <select id="selectByExample" parameterType="com.gbtech.iaaas.mbg.model.AeStaffExample" resultMap="BaseResultMap">
     select
@@ -119,20 +118,18 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ae_staff (type, username, password, 
-      name, eng_name, birthday, 
-      birthplace, nationality, cert_type, 
-      cert_number, email, mobile_phone, 
-      address, postcode, institution, 
-      status, create_time, modify_time
-      )
-    values (#{type,jdbcType=TINYINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{engName,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
-      #{birthplace,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, 
-      #{certNumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{institution,jdbcType=VARCHAR}, 
-      #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
-      )
+    insert into ae_staff (username, password, name, 
+      eng_name, birthday, birthplace, 
+      nationality, cert_type, cert_number, 
+      email, mobile_phone, address, 
+      postcode, institution, status, 
+      create_time, modify_time)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{engName,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{birthplace,jdbcType=VARCHAR}, 
+      #{nationality,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, #{certNumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{postcode,jdbcType=VARCHAR}, #{institution,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.gbtech.iaaas.mbg.model.AeStaff">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -140,9 +137,6 @@
     </selectKey>
     insert into ae_staff
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="type != null">
-        type,
-      </if>
       <if test="username != null">
         username,
       </if>
@@ -196,9 +190,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="type != null">
-        #{type,jdbcType=TINYINT},
-      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
@@ -264,9 +255,6 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=TINYINT},
-      </if>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
@@ -326,7 +314,6 @@
   <update id="updateByExample" parameterType="map">
     update ae_staff
     set id = #{record.id,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=TINYINT},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
@@ -351,9 +338,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.gbtech.iaaas.mbg.model.AeStaff">
     update ae_staff
     <set>
-      <if test="type != null">
-        type = #{type,jdbcType=TINYINT},
-      </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
@@ -410,8 +394,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gbtech.iaaas.mbg.model.AeStaff">
     update ae_staff
-    set type = #{type,jdbcType=TINYINT},
-      username = #{username,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       eng_name = #{engName,jdbcType=VARCHAR},

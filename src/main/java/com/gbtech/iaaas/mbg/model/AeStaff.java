@@ -8,9 +8,6 @@ public class AeStaff implements Serializable {
     @ApiModelProperty(value = "用户id，自增")
     private Integer id;
 
-    @ApiModelProperty(value = "用户类型，0: 管理者，1: 员工")
-    private Byte type;
-
     @ApiModelProperty(value = "用户账户名，每个用户唯一")
     private String username;
 
@@ -70,14 +67,6 @@ public class AeStaff implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Byte getType() {
-        return type;
-    }
-
-    public void setType(Byte type) {
-        this.type = type;
     }
 
     public String getUsername() {
@@ -223,7 +212,6 @@ public class AeStaff implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", type=").append(type);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", name=").append(name);
