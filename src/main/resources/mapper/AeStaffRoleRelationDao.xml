@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gbtech.iaaas.dao.StaffRoleRelationDao">
-  <select id="getPermissionList" resultMap="mapper.AeStaffPermissionMapper.BaseResultMap">
-
+  <select id="getStaffPermissionList"
+    resultMap="com.gbtech.iaaas.mbg.mapper.AeStaffPermissionMapper.BaseResultMap">
+    SELECT *
+    FROM ae_staff_role_relation asrr
+           LEFT JOIN ae_staff_role asr ON asrr.role_id = asr.id
+           LEFT JOIN ae_role_permission_relation arpr ON asr.id = arpr.role_id
+           LEFT JOIN ae_staff_permission asp ON arpr.permission_id = asp.id
+    WHERE asr.id = #{staffId}
+      AND asp.id IS NOT NULL;
   </select>
 </mapper>
