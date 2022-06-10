@@ -14,4 +14,6 @@ public interface StaffService {
 
 
     List<AeStaffPermission> getStaffPermissionList(int staffId);
+
+    String login(String username, String password);
 }
