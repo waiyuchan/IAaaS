@@ -8,9 +8,11 @@ import com.gbtech.iaaas.service.StaffService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +71,8 @@ public class StaffController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public Result loginStaff(@RequestBody StaffLoginParam staffLoginParam,
-            BindingResult bindingResult) {
+                             BindingResult bindingResult) {
+        logger.info("登陆信息: {}", staffLoginParam.toString());
         String token = staffService.login(staffLoginParam.getUsername(),
                 staffLoginParam.getPassword());
         if (token == null) {

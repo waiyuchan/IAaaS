@@ -2,7 +2,6 @@ package com.gbtech.iaaas.controller;
 
 import com.gbtech.iaaas.common.api.Result;
 import com.gbtech.iaaas.controller.manage.AccommodationController;
-import com.gbtech.iaaas.mbg.model.AcBuilding;
 import com.gbtech.iaaas.mbg.model.AcUser;
 import com.gbtech.iaaas.service.UserService;
 import io.swagger.annotations.Api;
