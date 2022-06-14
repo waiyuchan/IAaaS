@@ -33,7 +33,7 @@ public class StaffController {
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
-    private static final Logger logger = LoggerFactory.getLogger(AccommodationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(StaffController.class);
 
     @ApiOperation("注册新员工")
     @RequestMapping(method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

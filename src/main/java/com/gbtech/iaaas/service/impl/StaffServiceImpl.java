@@ -9,7 +9,9 @@ import com.gbtech.iaaas.mbg.model.AeStaffExample;
 import com.gbtech.iaaas.mbg.model.AeStaffPermission;
 import com.gbtech.iaaas.service.StaffService;
 import com.github.pagehelper.PageHelper;
+
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +82,7 @@ public class StaffServiceImpl implements StaffService {
         String token = null;
         try {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            logger.info("用户信息查询结果：{}", userDetails.getUsername());
             if (!passwordEncoder.matches(password, userDetails.getPassword())) {
                 throw new BadCredentialsException("密码不正确");
             }
