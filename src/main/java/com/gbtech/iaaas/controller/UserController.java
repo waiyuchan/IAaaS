@@ -1,7 +1,6 @@
 package com.gbtech.iaaas.controller;
 
 import com.gbtech.iaaas.common.api.Result;
-import com.gbtech.iaaas.controller.manage.AccommodationController;
 import com.gbtech.iaaas.mbg.model.AcUser;
 import com.gbtech.iaaas.service.UserService;
 import io.swagger.annotations.Api;
@@ -23,7 +22,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private static final Logger logger = LoggerFactory.getLogger(AccommodationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @ApiOperation("创建住户")
     @RequestMapping(method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

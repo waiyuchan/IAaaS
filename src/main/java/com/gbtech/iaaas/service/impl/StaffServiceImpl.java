@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
@@ -48,10 +49,20 @@ public class StaffServiceImpl implements StaffService {
     @Autowired
     private StaffRoleRelationDao staffRoleRelationDao;
 
-    private static final Logger logger = LoggerFactory.getLogger(AccommodationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(StaffServiceImpl.class);
 
     @Override
-    public int registerStaff(AeStaff aeStaff) {
+    public int registerStaff(AeStaff aeStaffInputParams) {
+        AeStaff aeStaff = new AeStaff();
+        BeanUtils.copyProperties(aeStaffInputParams, aeStaff);
+        AeStaffExample aeStaffExample = new AeStaffExample();
+        aeStaffExample.createCriteria().andUsernameEqualTo(aeStaff.getUsername());
+        List<AeStaff> staffList = aeStaffMapper.selectByExample(aeStaffExample);
+        if (staffList.size() > 0) {
+            return -1;
+        }
+        String encodePassword = passwordEncoder.encode(aeStaff.getPassword());
+        aeStaff.setPassword(encodePassword);
         return aeStaffMapper.insertSelective(aeStaff);
     }
 
@@ -82,7 +93,7 @@ public class StaffServiceImpl implements StaffService {
         String token = null;
         try {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            logger.info("用户信息查询结果：{}", userDetails.getUsername());
+            logger.info("用户信息查询结果: {}", userDetails.getUsername());
             if (!passwordEncoder.matches(password, userDetails.getPassword())) {
                 throw new BadCredentialsException("密码不正确");
             }
@@ -91,7 +102,7 @@ public class StaffServiceImpl implements StaffService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             token = jwtTokenUtil.generateToken(userDetails);
         } catch (AuthenticationException e) {
-            logger.warn("登陆异常:{}", e.getMessage());
+            logger.warn("登陆异常: {}", e.getMessage());
         }
         return token;
     }
