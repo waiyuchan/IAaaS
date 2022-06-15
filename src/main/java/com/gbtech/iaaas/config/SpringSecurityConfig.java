@@ -3,14 +3,11 @@ package com.gbtech.iaaas.config;
 import com.gbtech.iaaas.component.JwtAuthenticationTokenFilter;
 import com.gbtech.iaaas.component.RestAuthenticationEntryPoint;
 import com.gbtech.iaaas.component.RestfulAccessDeniedHandler;
-import com.gbtech.iaaas.controller.manage.AccommodationController;
 import com.gbtech.iaaas.dto.StaffUserDetail;
 import com.gbtech.iaaas.mbg.model.AeStaff;
 import com.gbtech.iaaas.mbg.model.AeStaffPermission;
 import com.gbtech.iaaas.service.StaffService;
-
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +58,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js",
                         "/swagger-resources/**",
                         "/v2/api-docs/**").permitAll()
-                .antMatchers("/manage/staff/login", "/manage/staff/register").permitAll() // 对登录、注册要允许匿名访问
+                .antMatchers("/manage/staff/login", "/manage/staff/register")
+                .permitAll() // 对登录、注册要允许匿名访问
                 .antMatchers(HttpMethod.OPTIONS).permitAll() // 解决跨域请求时会先进行一次options请求
                 .anyRequest().authenticated(); // 除上面外的所有请求全部需要鉴权认证
         // 禁用缓存

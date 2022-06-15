@@ -3,6 +3,7 @@ package com.gbtech.iaaas.service.impl;
 import com.gbtech.iaaas.common.utils.JwtTokenUtil;
 import com.gbtech.iaaas.controller.manage.AccommodationController;
 import com.gbtech.iaaas.dao.StaffRoleRelationDao;
+import com.gbtech.iaaas.dto.StaffRegisterReturn;
 import com.gbtech.iaaas.mbg.mapper.AeStaffMapper;
 import com.gbtech.iaaas.mbg.model.AeStaff;
 import com.gbtech.iaaas.mbg.model.AeStaffExample;
@@ -52,18 +53,24 @@ public class StaffServiceImpl implements StaffService {
     private static final Logger logger = LoggerFactory.getLogger(StaffServiceImpl.class);
 
     @Override
-    public int registerStaff(AeStaff aeStaffInputParams) {
+    public StaffRegisterReturn registerStaff(AeStaff aeStaffInputParams) {
+
         AeStaff aeStaff = new AeStaff();
         BeanUtils.copyProperties(aeStaffInputParams, aeStaff);
         AeStaffExample aeStaffExample = new AeStaffExample();
         aeStaffExample.createCriteria().andUsernameEqualTo(aeStaff.getUsername());
         List<AeStaff> staffList = aeStaffMapper.selectByExample(aeStaffExample);
         if (staffList.size() > 0) {
-            return -1;
+            return null;
         }
+        // 密码加密操作
         String encodePassword = passwordEncoder.encode(aeStaff.getPassword());
         aeStaff.setPassword(encodePassword);
-        return aeStaffMapper.insertSelective(aeStaff);
+        aeStaffMapper.insert(aeStaff);
+        StaffRegisterReturn registerReturn = new StaffRegisterReturn(aeStaff.getId(),
+                aeStaff.getUsername(), aeStaff.getName(), aeStaff.getEngName(),
+                aeStaff.getInstitution());
+        return registerReturn;
     }
 
     @Override

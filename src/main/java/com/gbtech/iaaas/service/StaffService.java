@@ -1,12 +1,13 @@
 package com.gbtech.iaaas.service;
 
+import com.gbtech.iaaas.dto.StaffRegisterReturn;
 import com.gbtech.iaaas.mbg.model.AeStaff;
 import com.gbtech.iaaas.mbg.model.AeStaffPermission;
 import java.util.List;
 
 public interface StaffService {
 
-    int registerStaff(AeStaff aeStaff);
+    StaffRegisterReturn registerStaff(AeStaff aeStaff);
 
     List<AeStaff> getStaffList(int pageNum, int pageSize);
 

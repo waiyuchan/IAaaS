@@ -3,6 +3,7 @@ package com.gbtech.iaaas.controller.manage;
 import com.gbtech.iaaas.common.api.Paginator;
 import com.gbtech.iaaas.common.api.Result;
 import com.gbtech.iaaas.dto.StaffLoginParam;
+import com.gbtech.iaaas.dto.StaffRegisterReturn;
 import com.gbtech.iaaas.mbg.model.AeStaff;
 import com.gbtech.iaaas.service.StaffService;
 import io.swagger.annotations.Api;
@@ -36,21 +37,17 @@ public class StaffController {
     private static final Logger logger = LoggerFactory.getLogger(StaffController.class);
 
     @ApiOperation("注册新员工")
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Result registerStaff(@RequestBody AeStaff aeStaff) {
-        Result result;
-        logger.info(
-                "Request Interface: '/manage/staff', " + "Request Content: " + aeStaff.toString());
-        int count = staffService.registerStaff(aeStaff);
-        if (count == 1) {
-            result = Result.success(staffService, "注册新员工成功");
-            logger.info("Register a new staff successful: {}", aeStaff);
-        } else {
-            result = Result.failed("注册新员工失败");
+        logger.info("Request Interface: '/manage/staff', " + "Content: " + aeStaff.toString());
+        StaffRegisterReturn staff = staffService.registerStaff(aeStaff);
+        if (staff == null) {
             logger.info("Register a new staff failed: {}", aeStaff);
+            Result.failed("注册新员工失败");
         }
-        return result;
+        logger.info("Register a new staff successful: {}", aeStaff);
+        return Result.success(staff, "注册新员工成功");
     }
 
     @ApiOperation("获取员工列表")
@@ -71,7 +68,7 @@ public class StaffController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public Result loginStaff(@RequestBody StaffLoginParam staffLoginParam,
-                             BindingResult bindingResult) {
+            BindingResult bindingResult) {
         logger.info("登陆信息: {}", staffLoginParam.toString());
         String token = staffService.login(staffLoginParam.getUsername(),
                 staffLoginParam.getPassword());
