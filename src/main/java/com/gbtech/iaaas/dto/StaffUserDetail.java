@@ -21,6 +21,10 @@ public class StaffUserDetail implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        System.out.println(staffPermissionList.stream()
+                .filter(aeStaffPermission -> aeStaffPermission.getValue() != null)
+                .map(aeStaffPermission -> new SimpleGrantedAuthority(
+                        aeStaffPermission.getValue())).collect(Collectors.toList()).toString());
         return staffPermissionList.stream()
                 .filter(aeStaffPermission -> aeStaffPermission.getValue() != null)
                 .map(aeStaffPermission -> new SimpleGrantedAuthority(

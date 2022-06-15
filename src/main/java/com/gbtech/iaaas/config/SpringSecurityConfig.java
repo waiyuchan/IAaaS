@@ -92,6 +92,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 logger.info("获取登录用户信息成功，该用户信息: {}", staff.toString());
                 List<AeStaffPermission> permissionList = staffService.getStaffPermissionList(
                         staff.getId());
+                logger.info("该用户权限列表为: {}", permissionList.toString());
                 return new StaffUserDetail(staff, permissionList);
             }
             throw new UsernameNotFoundException("用户名或密码错误");
