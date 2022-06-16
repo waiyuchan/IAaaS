@@ -92,6 +92,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public List<AeStaffPermission> getStaffPermissionList(int staffId) {
+        System.out.println(staffRoleRelationDao.getStaffPermissionList(staffId));
         return staffRoleRelationDao.getStaffPermissionList(staffId);
     }
 
